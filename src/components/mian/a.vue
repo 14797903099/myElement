@@ -1,17 +1,39 @@
 <template>
   <div>
-     我是啊
+    <el-button @click="handlePort">导出</el-button>
   </div>
 </template>
 
 <script>
-	
+import XLSX from 'xlsx'
+import {sheet2blob, openDownloadDialog } from '../../../static/js/exportExcel'
 export default {
   name: 'hello',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
     }
+  },
+  methods:{
+handlePort(){
+  	var aoa = [
+		[null, null, null, '其它信息'], // 特别注意合并的地方后面预留2个null
+		['姓名', '性别', '年龄', '注册时间'],
+		[null, '男', 18, new Date()],
+		['李四', '女', 22, new Date()]
+	];
+	var sheet = XLSX.utils.aoa_to_sheet(aoa);
+	sheet['!merges'] = [
+		// 设置A1-C1的单元格合并
+		// {	s: {r: 0, c: 0}, 
+		// 	e: {r: 0, c: 2}
+		// },
+		// {	s: {r: 2, c: 0}, 
+		// 	e: {r: 2, c: 3}
+		// }
+	];
+	openDownloadDialog(sheet2blob(sheet), '单元格合并示例.xlsx');
+}
   }
 }
 </script>

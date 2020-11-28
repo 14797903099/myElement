@@ -6,11 +6,16 @@ var vueLoaderConfig = require('./vue-loader.conf')
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
-
 module.exports = {
+  // entry: {
+  //   app: './src/main.js'
+  // },
   entry: {
-    app: './src/main.js'
-  },
+             app: ["babel-polyfill", './src/main.js']
+         },
+        node: {
+             fs: "empty"
+         },
   output: {
     path: config.build.assetsRoot,
     filename: '[name].js',
