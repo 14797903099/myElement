@@ -11,13 +11,12 @@
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
-    "element-ui": "^1.2.8",
+    "element-ui": "^2.0.11",
     "file-saver": "^2.0.5",
     "jquery": "^3.5.1",
     "vue": "^2.2.2",
     "vue-router": "^2.3.0",
-    "xlsx": "^0.16.9",
-    "xlsx-style": "^0.8.13"
+    "xlsx": "^0.16.9"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.2",
